@@ -1,3 +1,3 @@
-import Ring from "./Ring"
+import Ring from "./ring"
 
 export default Ring;
