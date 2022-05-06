@@ -27,16 +27,16 @@ class Ring<T> {
     }
 
     /**
-     * increment
+     * rotateRight
      */
-    public increment(): Ring<T> {
+    public  rotateRight(): Ring<T> {
         return this.rotate(1);
     }
 
     /**
-     * decrement
+     * rotateLfet
      */
-    public decrement(): Ring<T> {
+    public rotateLfet(): Ring<T> {
         return this.rotate(-1);
     }
 
