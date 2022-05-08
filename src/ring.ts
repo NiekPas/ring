@@ -99,7 +99,7 @@ class Ring<T> {
     /**
      * map
      */
-    public map<U>(callback: (value: T, index?: number, ring?: Ring<T>) => U): Ring<U> {
+    public map<U>(callback: (value: T, index: number, ring: Ring<T>) => U): Ring<U> {
         const mappedElements = this.toArray().map((element, i) => callback(element, i, this));
         return new Ring(mappedElements, 0);
     }
@@ -107,7 +107,7 @@ class Ring<T> {
     /**
      * filter
      */
-    public filter(predicate: (value: T, index?: number, ring?: Ring<T>) => boolean): Ring<T> {
+    public filter(predicate: (value: T, index: number, ring: Ring<T>) => boolean): Ring<T> {
         const filteredElements = this.toArray().filter((element, i) => predicate(element, i, this));
         return new Ring(filteredElements, 0);
     }
