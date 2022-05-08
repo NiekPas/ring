@@ -73,26 +73,6 @@ class Ring<T> {
     }
 
     /**
-     *insertAfter
-     */
-    public insertAfter(value: T, index: number) {
-        // TODO should support negative values of `index`
-        const elements = [
-            ...this.toArray().slice(0, index),
-            value,
-            this.toArray().slice(index)
-        ];
-
-        return new Ring(elements, 0);
-    }
-
-    /**
-     * insertBefore
-     */
-    public insertBefore(value: T, index: number) {
-    }
-
-    /**
      * take
      */
     public take(n: number): Ring<T> {
@@ -104,14 +84,6 @@ class Ring<T> {
         return new Ring(elements.slice(0, n), 0);
     }
 
-    /**
-     * range
-     */
-    // public range(start: number, end: number): Ring<T> {
-    //     if (start > end) {
-    //         throw new TypeError("range(): start index cannot be greater than end index.");
-    //     }
-    // }
 
     /**
      * reversed
@@ -123,13 +95,6 @@ class Ring<T> {
 
         return new Ring(reversedElements, reversedElements.length - this.focusIndex);
     }
-
-    /**
-     * split
-     */
-    // public split(i: number): [Ring<T>, Ring<T>] {
-    //     return [this.range(0, i), this.range(i + 1, this.elements.length - 1)];
-    // }
 
     /**
      * map
@@ -146,16 +111,6 @@ class Ring<T> {
         const filteredElements = this.toArray().filter((element, i) => predicate(element, i, this));
         return new Ring(filteredElements, 0);
     }
-
-    /**
-     * reduce
-     */
-    // public reduce<U>(callback: (previousValue: U, currentValue: T, currentIndex: number, ring: Ring<T>) => U, initialValue?: U): U {
-    //     const reduced = this.toArray().reduce((acc, val, i) => {
-    //         return callback(acc, val, i, this)
-    //     }, initialValue);
-    //     return reduced;
-    // }
 
     /**
      * find
