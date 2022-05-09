@@ -175,6 +175,8 @@ class Ring<T> {
         return nextElements.concat(firstElements);
     }
 
+
+    // TODO `isEmpty` should be a `get` property
     /**
      * isEmpty
      */
@@ -182,6 +184,7 @@ class Ring<T> {
         return this.elements.length < 1;
     }
 
+    // TODO `isEmpty` should be a `get` property
     /**
      * length
      */
