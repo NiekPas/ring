@@ -4,6 +4,13 @@ class Ring<T> {
     private focusIndex: number;
 
     constructor(elements: T[] = [], initialFocus: number = 0) {
+        if (initialFocus < 0) {
+           throw new TypeError("Ring(): cannot set focus to a negative number.");
+        }
+        if (elements.length > 0 && initialFocus >= elements.length) {
+            throw new TypeError("Ring(): cannot set focus to an index that is out of bounds.")
+        }
+
         this.elements = elements;
         this.focusIndex = initialFocus;
     }
