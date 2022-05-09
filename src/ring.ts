@@ -16,10 +16,24 @@ class Ring<T> {
     }
 
     /**
+     * isEmpty
+     */
+    public get isEmpty(): boolean {
+        return this.elements.length < 1;
+    }
+
+    /**
+     * length
+     */
+    public get length() {
+        return this.elements.length;
+    }
+
+    /**
      * focus
      */
-    public focus(): T {
-        if (this.isEmpty()) {
+    public get focus(): T {
+        if (this.isEmpty) {
             throw new TypeError("focus(): cannot retrieve focus from an empty ring.");
         }
 
@@ -37,16 +51,16 @@ class Ring<T> {
         // Negative `n` implies counterclockwise rotations
         if (n < 0) {
             // Recurse to allow counterclockwise 'lapping' rotations
-            if ((-1) * n >= this.length()) {
-                return this.rotate(n + this.length());
+            if ((-1) * n >= this.length) {
+                return this.rotate(n + this.length);
             }
 
-            return new Ring(this.elements, this.focusIndex + this.length() + n);
+            return new Ring(this.elements, this.focusIndex + this.length + n);
         }
 
         // Recurse to allow 'lapping' rotations
-        if (n >= this.length()) {
-            return this.rotate(n - this.length());
+        if (n >= this.length) {
+            return this.rotate(n - this.length);
         }
 
         // Base case: simple incrementation
@@ -182,22 +196,6 @@ class Ring<T> {
         return nextElements.concat(firstElements);
     }
 
-
-    // TODO `isEmpty` should be a `get` property
-    /**
-     * isEmpty
-     */
-    public isEmpty(): boolean {
-        return this.elements.length < 1;
-    }
-
-    // TODO `isEmpty` should be a `get` property
-    /**
-     * length
-     */
-    public length() {
-        return this.elements.length;
-    }
 }
 
 export default Ring;
