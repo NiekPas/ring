@@ -1,5 +1,7 @@
 import Ring from "../src";
 
+const testNumbers = [1,2,3,4,5,6]
+
 describe("Ring instantiation", () => {
     test("Should instantiate an empty ring", () => {
         expect(new Ring()).toStrictEqual(new Ring());
@@ -32,4 +34,30 @@ describe("Retrieving focus", () => {
 });
 
 describe("Inserting elements", () => {})
-describe("Rotations", () => {});
+describe("Rotations", () => {
+    const r = new Ring(testNumbers);
+
+    test("should perform a single clockwise rotation", () => {
+        expect(r.rotate(1).focus()).toEqual(2);
+    });
+
+    test("should perform multiple clockwise rotations", () => {
+        expect(r.rotate(4).focus()).toEqual(5);
+    });
+
+    test("should perform a lapping clockwise rotation", () => {
+        expect(r.rotate(27).focus()).toEqual(4);
+    });
+
+    test("should perform a single counterclockwise rotation", () => {
+        expect(r.rotate(-1).focus()).toEqual(6);
+    });
+
+    test("should perform multiple counterclockwise rotations", () => {
+        expect(r.rotate(-4).focus()).toEqual(3);
+    });
+
+    test("should perform a lapping counterclockwise rotation", () => {
+        expect(r.rotate(-27).focus()).toEqual(4);
+    });
+});
