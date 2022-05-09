@@ -23,6 +23,26 @@ class Ring<T> {
      * rotate
      */
     public rotate(n: number): Ring<T> {
+        if (n === 0) {
+            return this;
+        }
+
+        // Negative `n` implies counterclockwise rotations
+        if (n < 0) {
+            // Recurse to allow counterclockwise 'lapping' rotations
+            if ((-1) * n >= this.length()) {
+                return this.rotate(n + this.length());
+            }
+
+            return new Ring(this.elements, this.focusIndex + this.length() + n);
+        }
+
+        // Recurse to allow 'lapping' rotations
+        if (n >= this.length()) {
+            return this.rotate(n - this.length());
+        }
+
+        // Base case: simple incrementation
         return new Ring(this.elements, this.focusIndex + n);
     }
 
