@@ -34,9 +34,9 @@ class Ring<T> {
     }
 
     /**
-     * rotateLfet
+     * rotateLeft
      */
-    public rotateLfet(): Ring<T> {
+    public rotateLeft(): Ring<T> {
         return this.rotate(-1);
     }
 
