@@ -13,7 +13,7 @@ class Ring<T> {
      */
     public focus(): T {
         if (this.isEmpty()) {
-            throw new TypeError("focus(): cannot retrieve focus from an empty ring.")
+            throw new TypeError("focus(): cannot retrieve focus from an empty ring.");
         }
 
         return this.elements[this.focusIndex];
