@@ -12,8 +12,8 @@ describe("Ring instantiation", () => {
     test("Should instantiate a ring with elements", () => {
         const r = new Ring([1, 2, 3, 4]);
 
-        expect(r).toStrictEqual(new Ring([1,2,3,4]));
-        expect(r.toArray()).toStrictEqual([1,2,3,4]);
+        expect(r).toStrictEqual(new Ring([1, 2, 3, 4]));
+        expect(r.toArray()).toStrictEqual([1, 2, 3, 4]);
     });
 
     test("Should instantiate a ring with elements and focus", () => {
