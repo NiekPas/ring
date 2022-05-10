@@ -62,3 +62,19 @@ describe("Rotations", () => {
         expect(r.rotate(-27).focus).toEqual(4);
     });
 });
+
+describe("Reduce", () => {
+
+    test("should sum a ring of numbers", () => {
+        const r = new Ring(testNumbers);
+
+        expect(r.reduce((acc, val) => acc + val)).toEqual(21);
+    });
+
+    test("should concatenate a ring of strings", () => {
+        const r = new Ring(testStrings);
+
+        expect(r.reduce((acc, val) => acc + val)).toEqual("abcdefg");
+    });
+
+});
