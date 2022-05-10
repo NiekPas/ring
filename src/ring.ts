@@ -5,10 +5,10 @@ class Ring<T> {
 
     constructor(elements: T[] = [], initialFocus: number = 0) {
         if (initialFocus < 0) {
-           throw new TypeError("Ring(): cannot set focus to a negative number.");
+            throw new TypeError("Ring(): cannot set focus to a negative number.");
         }
         if (elements.length > 0 && initialFocus >= elements.length) {
-            throw new TypeError("Ring(): cannot set focus to an index that is out of bounds.")
+            throw new TypeError("Ring(): cannot set focus to an index that is out of bounds.");
         }
 
         this.elements = elements;
@@ -70,7 +70,7 @@ class Ring<T> {
     /**
      * rotateRight
      */
-    public  rotateRight(): Ring<T> {
+    public rotateRight(): Ring<T> {
         return this.rotate(1);
     }
 
