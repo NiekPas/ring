@@ -62,3 +62,23 @@ describe("Rotations", () => {
         expect(r.rotate(-27).focus).toEqual(4);
     });
 });
+
+describe("elementAt", () => {
+    const r = new Ring(testNumbers);
+
+    test("Should return an element by index", () => {
+        expect(r.elementAt(3)).toEqual(4);
+    });
+
+    test("Should return an element by negative index", () => {
+        expect(r.elementAt(-1)).toEqual(6);
+    });
+
+    test("Should return an element by index greater than the length of the ring", () => {
+        expect(r.elementAt(8)).toEqual(3);
+    });
+
+    test("Should return an element by negative index greater than the length of the ring", () => {
+        expect(r.elementAt(-7)).toEqual(6);
+    });
+});

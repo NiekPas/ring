@@ -41,6 +41,33 @@ class Ring<T> {
     }
 
     /**
+     * elementAt
+     */
+    public elementAt(i: number): T {
+        if (i === 0) {
+           return this.focus;
+        }
+
+        else if (i > 0) {
+            // If the index is greater than the number of elements in the ring, wrap around the ring
+            if (i > this.length - 1) {
+                return this.elementAt(i - this.length);
+            }
+            // Return by index
+            return this.toArray()[i];
+        }
+
+        else if (i < 0) {
+            // If the negative index is less than the number of elements in the ring, wrap around the ring
+            if (i < (-1 * (this.length - 1))) {
+                return this.elementAt(i + this.length);
+            }
+            // Return by index
+            return this.toArray()[this.length + i];
+        }
+    }
+
+    /**
      * rotate
      */
     public rotate(n: number): Ring<T> {
