@@ -45,7 +45,7 @@ class Ring<T> {
      */
     public elementAt(i: number): T {
         if (i === 0) {
-           return this.focus;
+            return this.focus;
         }
 
         else if (i > 0) {
