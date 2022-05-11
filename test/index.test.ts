@@ -30,7 +30,7 @@ describe("Retrieving focus", () => {
     });
 
     test("should not retrieve focus from an empty ring", () => {
-        expect(new Ring().focus).toThrow(TypeError);
+        expect(() => {new Ring().focus}).toThrow(TypeError);
     });
 });
 
