@@ -25,7 +25,7 @@ class Ring<T> {
     /**
      * length
      */
-    public get length() {
+    public get length(): number {
         return this.elements.length;
     }
 
