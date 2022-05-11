@@ -154,14 +154,20 @@ class Ring<T> {
 
 
     /**
-     * reversed
+     * Reverses the ring by accumulating the elements counterclockwise and returning a new ring. The focused element remains the same.
      */
     public reversed(): Ring<T> {
-        const firstHalf = this.elements.slice(0, this.focusIndex);
-        const secondHalf = this.elements.slice(this.focusIndex, this.elements.length);
-        const reversedElements = secondHalf.reverse().concat(firstHalf.reverse());
+        if (this.isEmpty) {
+            return this;
+        }
 
-        return new Ring(reversedElements, reversedElements.length - this.focusIndex);
+        const elementsBeforeFocus = this.elements.slice(0, this.focusIndex);
+        const focusedElement = this.focus;
+        const elementsAfterFocus = this.elements.slice(this.focusIndex + 1, this.elements.length);
+
+        const reversedElements = [focusedElement].concat(elementsBeforeFocus.reverse()).concat(elementsAfterFocus.reverse());
+
+        return new Ring(reversedElements, 0);
     }
 
     /**

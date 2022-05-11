@@ -82,3 +82,31 @@ describe("elementAt", () => {
         expect(r.elementAt(-7)).toEqual(6);
     });
 });
+
+
+describe("Reversed", () => {
+    test("Should reverse an empty ring", () => {
+        const r = new Ring();
+        expect(r.reversed()).toEqual(new Ring());
+    });
+
+    test("Should reverse a ring with one element", () => {
+        const ring = new Ring([25]);
+        expect(ring.reversed()).toEqual(new Ring([25]));
+    });
+
+    test("Should reverse a ring with several elements", () => {
+        const ring = new Ring([1, 2, 3]);
+        expect(ring.reversed().toArray()).toEqual([1, 3, 2]);
+    });
+
+    test("Should reverse a ring with several elements and offset focus", () => {
+        const ring = new Ring([1, 2, 3], 1);
+        expect(ring.reversed().toArray()).toEqual([2, 1, 3]);
+    });
+
+    test("Should be symmetrical", () => {
+        const ring = new Ring([1, 2, 3, 4, 5], 3);
+        expect(ring.reversed().reversed().toArray()).toEqual([4, 5, 1, 2, 3]);
+    });
+});
