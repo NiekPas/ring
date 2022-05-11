@@ -141,17 +141,17 @@ class Ring<T> {
     }
 
     /**
-     * take
+     * Starting at the focused element inclusive, takes `n` elements from the ring and returns an array. If `n` is negative, the elements are accumulated in counterclockwise order.
+     * @param n The number of elements to take. If `n` is 0, an empty array is returned. If `n` is greater than the length of the ring, the entire ring is returned.
      */
-    public take(n: number): Ring<T> {
+    public take(n: number): T[] {
         if (n === 0) {
-            return new Ring<T>();
+            return [];
         }
         const elements = (n > 0) ? this.toArray() : this.reversed().toArray();
-        // Return a new ring with a slice of the current ring.
-        return new Ring(elements.slice(0, n), 0);
-    }
 
+        return elements.slice(0, Math.abs(n));
+    }
 
     /**
      * Reverses the ring by accumulating the elements counterclockwise and returning a new ring. The focused element remains the same.

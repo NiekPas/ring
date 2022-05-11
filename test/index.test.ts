@@ -83,6 +83,37 @@ describe("elementAt", () => {
     });
 });
 
+describe("Take", () => {
+    const r = new Ring(testNumbers);
+
+    test("Should return an empty ring when taking zero elements ", () => {
+        expect(r.take(0)).toEqual([]);
+    });
+
+    test("Should take a single element", () => {
+        expect(r.take(1)).toEqual([1]);
+    });
+
+    test("Should take several elements", () => {
+        expect(r.take(3)).toEqual([1, 2, 3]);
+    });
+
+    test("Should return all the elements when `n` is greater than the number of elements in the ring", () => {
+        expect(r.take(8)).toEqual([1, 2, 3, 4, 5, 6]);
+    })
+
+    test("Should take a single element counterclockwise", () => {
+        expect(r.take(-1)).toEqual([1]);
+    });
+
+    test("Should take several elements counterclockwise", () => {
+        expect(r.take(-4)).toEqual([1, 6, 5, 4]);
+    });
+
+    test("Should return all the elements counterclockwise when `n` is greater than the number of elements in the ring", () => {
+        expect(r.take(-9)).toEqual([1, 6, 5, 4, 3, 2]);
+    });
+});
 
 describe("Reversed", () => {
     test("Should reverse an empty ring", () => {
