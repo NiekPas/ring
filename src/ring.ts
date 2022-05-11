@@ -154,6 +154,26 @@ class Ring<T> {
     }
 
     /**
+    * Returns the clockwise range between `startIndex` (inclusive) and `length` as a new ring, with the element at `startIndex` focused.
+    * If `length` is negative, the elements are accumulated in counter-clockwise order.
+    * This method does not wrap: if `length` is greater than the length of the ring, the entire ring is returned.
+    *
+    * @param startIndex The index from which to start constructing the new Ring.
+    * @param length The number of elements to traverse, and the length of the resulting ring.
+    */
+    public range(startIndex: number, length: number): Ring<T> {
+        if (length === 0) {
+            return new Ring([this.elementAt(startIndex)]);
+        }
+        if (length > 0) {
+            return new Ring(this.rotate(startIndex).toArray().slice(0, length));
+        }
+        if (length < 0) {
+            return new Ring(this.rotate(startIndex).reversed().toArray().slice(0, Math.abs(length)));
+        }
+    }
+
+    /**
      * Reverses the ring by accumulating the elements counterclockwise and returning a new ring. The focused element remains the same.
      */
     public reversed(): Ring<T> {

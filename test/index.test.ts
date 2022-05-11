@@ -141,3 +141,39 @@ describe("Reversed", () => {
         expect(ring.reversed().reversed().toArray()).toEqual([4, 5, 1, 2, 3]);
     });
 });
+
+describe("Range", () => {
+    const r = new Ring(testNumbers);
+
+    test("should return a clockwise range of elements", () => {
+        expect(r.range(0, 3).toArray()).toEqual([1, 2, 3]);
+    });
+
+    test("should return a counterclockwise range of elements", () => {
+        expect(r.range(0,-3).toArray()).toEqual([1, 6, 5]);
+    });
+
+    test("should return a clockwise range of numbers starting at a positive index", () => {
+        expect(r.range(2, 5).toArray()).toEqual([3, 4, 5, 6, 1]);
+    });
+
+    test("should return a counterclockwise range of numbers starting at a positive index", () => {
+        expect(r.range(2, -2).toArray()).toEqual([3, 2]);
+    });
+
+    test("should return a clockwise range of numbers starting at a negative index", () => {
+        expect(r.range(-2, 2).toArray()).toEqual([5, 6]);
+    });
+
+    test("should return a counterclockwise range of numbers starting at a negative index", () => {
+        expect(r.range(-2, -5).toArray()).toEqual([5, 4, 3, 2, 1]);
+    });
+
+    test("should return a clockwise range of numbers larger than the ring itself", () => {
+        expect(r.range(0, 9).toArray()).toEqual([1, 2, 3, 4, 5, 6]);
+    });
+
+    test("should return a counterclockwise range of numbers larger than the ring itself", () => {
+        expect(r.range(0, -9).toArray()).toEqual([1, 6, 5, 4, 3, 2]);
+    });
+});
