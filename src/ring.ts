@@ -207,6 +207,16 @@ class Ring<T> {
     }
 
     /**
+     * reduce
+     */
+    public reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue?: T): T {
+        if (initialValue !== null && initialValue !== undefined) {
+            return this.elements.reduce(callbackfn, initialValue);
+        }
+        return this.elements.reduce(callbackfn);
+    }
+
+    /**
      * find
      */
     public find(predicate: (value: T, index: number, ring: Ring<T>) => boolean): T | null {

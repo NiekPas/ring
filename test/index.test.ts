@@ -177,3 +177,29 @@ describe("Range", () => {
         expect(r.range(0, -9).toArray()).toEqual([1, 6, 5, 4, 3, 2]);
     });
 });
+
+describe("Reduce", () => {
+    const r = new Ring(testNumbers);
+
+    test("Should return the correct result when reducing over numbers", () => {
+        const sumReducer = (acc, curr) => acc + curr;
+        expect(r.reduce(sumReducer, 0)).toEqual(21); // Sum of 1 + 2 + 3 + 4 + 5 + 6
+    });
+
+    test("Should return the correct result when reducing over strings", () => {
+        const concatReducer = (acc, curr) => acc + curr;
+        const ring = new Ring(testStrings);
+        expect(ring.reduce(concatReducer, "")).toEqual("abcdefg");
+    });
+
+    test("Should return the initial value when reducing an empty ring", () => {
+        const concatReducer = (acc, curr) => acc + curr;
+        const emptyRing = new Ring();
+        expect(emptyRing.reduce(concatReducer, "initial")).toEqual("initial");
+    });
+
+    test("Should work with different initial values", () => {
+        const subtractReducer = (acc, curr) => acc - curr;
+        expect(r.reduce(subtractReducer, 100)).toEqual(79); // 100 - (1 + 2 + 3 + 4 + 5 + 6)
+    });
+});
