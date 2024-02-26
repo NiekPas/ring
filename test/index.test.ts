@@ -186,6 +186,11 @@ describe("Reduce", () => {
         expect(r.reduce(sumReducer, 0)).toEqual(21); // Sum of 1 + 2 + 3 + 4 + 5 + 6
     });
 
+    test("Should return the correct result when reducing over numbers without an initial value", () => {
+        const sumReducer = (acc, curr) => acc + curr;
+        expect(r.reduce(sumReducer)).toEqual(21); // Sum of 1 + 2 + 3 + 4 + 5 + 6
+    });
+
     test("Should return the correct result when reducing over strings", () => {
         const concatReducer = (acc, curr) => acc + curr;
         const ring = new Ring(testStrings);
