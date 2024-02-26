@@ -30,7 +30,7 @@ describe("Retrieving focus", () => {
     });
 
     test("should not retrieve focus from an empty ring", () => {
-        expect(() => {new Ring().focus}).toThrow(TypeError);
+        expect(() => { new Ring().focus; }).toThrow(TypeError);
     });
 });
 
@@ -100,7 +100,7 @@ describe("Take", () => {
 
     test("Should return all the elements when `n` is greater than the number of elements in the ring", () => {
         expect(r.take(8)).toEqual([1, 2, 3, 4, 5, 6]);
-    })
+    });
 
     test("Should take a single element counterclockwise", () => {
         expect(r.take(-1)).toEqual([1]);
@@ -150,7 +150,7 @@ describe("Range", () => {
     });
 
     test("should return a counterclockwise range of elements", () => {
-        expect(r.range(0,-3).toArray()).toEqual([1, 6, 5]);
+        expect(r.range(0, -3).toArray()).toEqual([1, 6, 5]);
     });
 
     test("should return a clockwise range of numbers starting at a positive index", () => {
